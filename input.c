@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/09 16:17:35 by lupayet          ###   ########.fr       */
+/*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
+/*   Updated: 2025/06/09 16:08:07 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-#define WIN_WIDTH 500
-#define WIN_HEIGHT 400
-
-int	main()
+int	input(int keycode, t_app *vars)
 {
-	t_app	fdf;
-	
-	fdf.mlx = mlx_init();
-	fdf.win = mlx_new_window(fdf.mlx, WIN_WIDTH, WIN_HEIGHT, "test");	
-	mlx_key_hook(fdf.win, &input, &fdf);
+	if (keycode == Esc)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
+	}
 	return (0);
 }
+

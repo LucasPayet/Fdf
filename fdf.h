@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/09 16:17:35 by lupayet          ###   ########.fr       */
+/*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
+/*   Updated: 2025/06/09 11:40:49 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef FDF_H
+# define FDF_H
 
-#define WIN_WIDTH 500
-#define WIN_HEIGHT 400
+#include "./minilibx-linux/mlx.h"
+#include <stdlib.h>
+#define Esc	0xff1b
 
-int	main()
+typedef struct	s_app
 {
-	t_app	fdf;
-	
-	fdf.mlx = mlx_init();
-	fdf.win = mlx_new_window(fdf.mlx, WIN_WIDTH, WIN_HEIGHT, "test");	
-	mlx_key_hook(fdf.win, &input, &fdf);
-	return (0);
-}
+	void	*mlx;
+	void	*win;
+}	t_app;
+
+int input(int keycode, t_app *vars);
+
+#endif
