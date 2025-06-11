@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:00 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/09 23:53:36 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/11 11:31:44 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_map
 {
 	int	width;
 	int	height;
-}
+}	t_map;
 
 typedef struct	s_img
 {

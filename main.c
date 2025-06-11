@@ -6,11 +6,12 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/11 00:42:15 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/11 11:32:01 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "libft.h"
 
 #define WIN_WIDTH 1000
 #define WIN_HEIGHT 1000
@@ -18,11 +19,12 @@
 int	main()
 {
 	t_fdf	fdf;
-	t_img	img;
+//	t_img	img;
 	fdf.mlx = mlx_init();
 	fdf.win = mlx_new_window(fdf.mlx, WIN_WIDTH, WIN_HEIGHT, "test");
-	img.img = mlx_new_image(fdf.mlx);
-	mlx_put_image_to_window(fdf.mlx, fdf.win, );
+	ft_printf("test\n");
+//	img.img = mlx_new_image(fdf.mlx);
+//	mlx_put_image_to_window(fdf.mlx, fdf.win, );
 	mlx_key_hook(fdf.win, input, &fdf);
 	mlx_loop(fdf.mlx);
 	return (0);
