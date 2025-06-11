@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/09 22:40:03 by lupayet          ###   ########.fr       */
+/*   Created: 2025/06/09 23:42:02 by lupayet           #+#    #+#             */
+/*   Updated: 2025/06/10 00:02:23 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "fdf.h"
 
-#include "./minilibx-linux/mlx.h"
-#include "s_fdf.h"
-#include <stdlib.h>
-#define Esc	0xff1b
+int	map_init(int	fd)
+{
+	char	*line;
+	s_map	map;
+	int		tmp;
 
-int input(int keycode, t_fdf *vars);
-
-#endif
+	map.x = 0;
+	map.y = 0;
+	get_next_line(fd);
+	while (line)
+	{
+		tmp = ft_strlen(line);
+		if 
+	}
+}
