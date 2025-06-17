@@ -6,20 +6,29 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:00 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/11 11:31:44 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/17 20:08:09 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct	s_fdf
+typedef struct	s_mlx
 {
 	void	*mlx;
 	void	*win;
-}	t_fdf;
+}	t_mlx;
+
+typedef struct s_pixel
+{
+	int	x;
+	int y;
+	int	z;
+	int	color;
+}	t_pixel;
 
 typedef struct s_map
 {
 	int	width;
 	int	height;
+	t_pixel	**pixels;
 }	t_map;
 
 typedef struct	s_img
@@ -30,3 +39,14 @@ typedef struct	s_img
 	int		line_length;
 	int		endian;
 }	t_img;
+
+typedef struct	s_fdf
+{
+	t_mlx	mlx;
+	t_map	map;
+	t_img	img;
+	int		zoom;
+	int		offset_x;
+	int		offset_y;
+	int		angle;
+}	t_fdf;

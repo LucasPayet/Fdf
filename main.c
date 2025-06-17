@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/11 11:32:01 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/17 20:29:05 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,42 @@
 #define WIN_WIDTH 1000
 #define WIN_HEIGHT 1000
 
-int	main()
+void info(t_fdf *fdf)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("###MLX###\nmlx_p => %p;\nwin_p => %p;\n", fdf->mlx.mlx, fdf->mlx.win);
+	ft_printf("\n###MAP###\nwidth => %d;\nheight => %d;\nmap_p => %p;\n", fdf->map.width, fdf->map.height, fdf->map.pixels);
+	while (i < fdf->map.height * fdf->map.width)
+	{
+		if (!(i % fdf->map.width))
+			ft_printf("\n");
+		ft_printf("(%d, %d, %d, %x);\n", fdf->map.pixels[i]->x, fdf->map.pixels[i]->y, fdf->map.pixels[i]->z, fdf->map.pixels[i]->color);
+		i++;
+	}
+	ft_printf("\n###IMG###\nimg_p => %p;\naddr => %p;\nbits_p_pixel => %d;\nline_length => %d;\nendian => %d;\n", fdf->img.img, fdf->img.addr, fdf->img.bits_per_pixel, fdf->img.line_length, fdf->img.endian);
+}
+
+int	main(int ac, char *av[])
 {
 	t_fdf	fdf;
-//	t_img	img;
-	fdf.mlx = mlx_init();
-	fdf.win = mlx_new_window(fdf.mlx, WIN_WIDTH, WIN_HEIGHT, "test");
-	ft_printf("test\n");
-//	img.img = mlx_new_image(fdf.mlx);
-//	mlx_put_image_to_window(fdf.mlx, fdf.win, );
-	mlx_key_hook(fdf.win, input, &fdf);
-	mlx_loop(fdf.mlx);
+
+	if (ac != 2)
+	{
+		ft_putstr_fd("Wrong input", 2);
+		return (1);
+	}	
+	map_init(av[1], &fdf);
+	fdf.mlx.mlx = mlx_init();
+	fdf.mlx.win = mlx_new_window(fdf.mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "test");
+	fdf.img.img = mlx_new_image(fdf.mlx.mlx, 1000, 1000);
+	fdf.img.addr = mlx_get_data_addr(fdf.img.img, &fdf.img.bits_per_pixel, &fdf.img.line_length, &fdf.img.endian);
+	ft_memset(fdf.img.addr, 15, 4000000);
+	mlx_put_image_to_window(fdf.mlx.mlx, fdf.mlx.win, fdf.img.img, 250, 250);
+	info(&fdf);
+	mlx_key_hook(fdf.mlx.win, input, &fdf);
+	mlx_loop(fdf.mlx.mlx);
 	return (0);
 }
 

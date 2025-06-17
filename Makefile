@@ -6,7 +6,7 @@
 #    By: lupayet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/06 11:54:12 by lupayet           #+#    #+#              #
-#    Updated: 2025/06/11 11:35:03 by lupayet          ###   ########.fr        #
+#    Updated: 2025/06/17 17:51:48 by lupayet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ AR = ar rs
 CFLAGS	= -Wall -Wextra -Werror
 RM = rm -f
 
-SRC	= main.c input.c ./Gnl/get_next_line.c ./Gnl/get_next_line_utils.c
+SRC	= main.c input.c clean.c close.c map.c color.c ./Gnl/get_next_line.c ./Gnl/get_next_line_utils.c
 
 OBJ	= $(SRC:.c=.o)
 

@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/12 00:32:58 by lupayet          ###   ########.fr       */
+/*   Created: 2025/06/12 00:05:10 by lupayet           #+#    #+#             */
+/*   Updated: 2025/06/12 19:39:35 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	input(int keycode, t_fdf *fdf)
+void	close_fdf(char *msg, int fd, t_fdf *fdf)
 {
-	if (keycode == Esc)
-		close_fdf(NULL, 1, fdf);
-	return (0);
+	clean_fdf(fdf);
+	mlx_clear_window(fdf->mlx.mlx, fdf->mlx.win);
+	mlx_destroy_window(fdf->mlx.mlx, fdf->mlx.win);
+	mlx_destroy_display(fdf->mlx.mlx);
+	free(fdf->mlx.mlx);
+	if (msg)
+		ft_putstr_fd(msg, fd);
+	exit(0);
 }

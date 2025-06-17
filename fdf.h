@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/09 22:40:03 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/17 15:40:30 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 
 #include "./minilibx-linux/mlx.h"
 #include "s_fdf.h"
+#include "libft.h"
 #include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
 #define Esc	0xff1b
 
-int input(int keycode, t_fdf *vars);
-
+int 			input(int keycode, t_fdf *vars);
+void			clean_fdf(t_fdf *fdf);
+void			close_fdf(char *msg, int fd, t_fdf *fdf);
+int				map_init(char *path, t_fdf *fdf);
+unsigned int	hex_rgb_to_int(char *hex);
 #endif
