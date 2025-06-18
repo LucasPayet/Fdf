@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/12 00:32:58 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/18 16:21:33 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	input(int keycode, t_fdf *fdf)
 {
 	if (keycode == Esc)
-		close_fdf(NULL, 1, fdf);
+		close_fdf(fdf);
 	return (0);
 }

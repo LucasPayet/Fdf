@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 21:12:28 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/17 18:48:32 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/18 14:37:48 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 void	clean_map(t_map *map)
 {
-	int i;
-
-	i = 0;
 	//if (!map->map)
 	//	return ;
-	while (i < map->height * map->width)
+/*	while (i < map->height * map->width)
 	{	
 		free(map->pixels[i]);
 		i++;
-	}
+	}*/
 	free(map->pixels);
 }
 
 void	clean_img(t_fdf *fdf)
 {
-	mlx_destroy_image(fdf->mlx.mlx, fdf->img.img);
+	if (fdf->img.img)
+		mlx_destroy_image(fdf->mlx.mlx, fdf->img.img);
 /*	if (fdf->img.img)
 	{
 		free(fdf->img.img);

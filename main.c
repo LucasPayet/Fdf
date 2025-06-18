@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/17 20:29:05 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/18 16:27:25 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void info(t_fdf *fdf)
 	{
 		if (!(i % fdf->map.width))
 			ft_printf("\n");
-		ft_printf("(%d, %d, %d, %x);\n", fdf->map.pixels[i]->x, fdf->map.pixels[i]->y, fdf->map.pixels[i]->z, fdf->map.pixels[i]->color);
+		ft_printf("(%d, %d, %d, %x);\n", fdf->map.pixels[i].x, fdf->map.pixels[i].y, fdf->map.pixels[i].z, fdf->map.pixels[i].color);
 		i++;
 	}
 	ft_printf("\n###IMG###\nimg_p => %p;\naddr => %p;\nbits_p_pixel => %d;\nline_length => %d;\nendian => %d;\n", fdf->img.img, fdf->img.addr, fdf->img.bits_per_pixel, fdf->img.line_length, fdf->img.endian);
@@ -47,10 +47,18 @@ int	main(int ac, char *av[])
 	fdf.mlx.win = mlx_new_window(fdf.mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "test");
 	fdf.img.img = mlx_new_image(fdf.mlx.mlx, 1000, 1000);
 	fdf.img.addr = mlx_get_data_addr(fdf.img.img, &fdf.img.bits_per_pixel, &fdf.img.line_length, &fdf.img.endian);
-	ft_memset(fdf.img.addr, 15, 4000000);
-	mlx_put_image_to_window(fdf.mlx.mlx, fdf.mlx.win, fdf.img.img, 250, 250);
+	for (int y = 0; y < 1000; y++)
+	{
+		for (int x = 0; x < 1000; x++)
+		{
+			int offset = y * fdf.img.line_length + x * 4;
+			*(unsigned int *)(fdf.img.addr + offset) = 1694498815;
+		}
+	}
+	mlx_put_image_to_window(fdf.mlx.mlx, fdf.mlx.win, fdf.img.img, 0, 0);
 	info(&fdf);
 	mlx_key_hook(fdf.mlx.win, input, &fdf);
+	mlx_hook(fdf.mlx.win, 17, 0, close_fdf, &fdf);
 	mlx_loop(fdf.mlx.mlx);
 	return (0);
 }
