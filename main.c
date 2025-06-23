@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/18 16:27:25 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/23 18:52:54 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ int	main(int ac, char *av[])
 		ft_putstr_fd("Wrong input", 2);
 		return (1);
 	}	
-	map_init(av[1], &fdf);
 	fdf.mlx.mlx = mlx_init();
 	fdf.mlx.win = mlx_new_window(fdf.mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "test");
 	fdf.img.img = mlx_new_image(fdf.mlx.mlx, 1000, 1000);
 	fdf.img.addr = mlx_get_data_addr(fdf.img.img, &fdf.img.bits_per_pixel, &fdf.img.line_length, &fdf.img.endian);
+	map_init(av[1], &fdf);
 	for (int y = 0; y < 1000; y++)
 	{
 		for (int x = 0; x < 1000; x++)

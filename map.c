@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:42:02 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/18 14:32:46 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/23 19:40:02 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	set_pixel(t_map *map, int l, char **value)
 		{
 			ft_strlcpy(z, value[i], (sep - value[i]));
 			map->pixels[l + i].z = ft_atoi(z);
+			ft_printf("%s\n", ++sep);
 			map->pixels[l + i].color = hex_rgb_to_int(++sep);
 		}
 		map->pixels[l + i].x = i;
@@ -80,34 +81,28 @@ int	set_pixel(t_map *map, int l, char **value)
 
 void	set_pixels(char *path, t_map *map, t_fdf *fdf)
 {
-	int		fd;
 	int		l;
 	int		tmp;
-	char	*line;
-	char	**value;
 
-	fd = open(path, O_RDONLY);
-	line = get_next_line(fd);
-	map->width = count_word(line, ' ');
+	map->fd = open(path, O_RDONLY);
+	map->line = get_next_line(map->fd);
+	map->width = count_word(map->line, ' ');
 	map->pixels = malloc(sizeof(t_pixel) * map->height * map->width);
 	if (!map->pixels)
-		close_fdf("Invalid map", 2, fdf);
+		close_fdf(fdf);
 	l = 0;
-	while (line)
+	while (map->line)
 	{
-		tmp = count_word(line, ' ');
+		tmp = count_word(map->line, ' ');
 		if (map->width != tmp)
-		{
-			ft_printf("tmp\n");
-			close_fdf("Invalid map", 2, fdf);
-		}
-		value = ft_split(line, ' ');
-		l = set_pixel(map, l, value);
-		free(line);
-		free(value);
-		line = get_next_line(fd);
+			close_fdf(fdf);
+		map->split = ft_split(map->line, ' ');
+		l = set_pixel(map, l, map->split);
+		free(map->line);
+		clean_split(map->split);
+		map->line = get_next_line(map->fd);
 	}
-	close(fd);
+	close(map->fd);
 }
 
 int	map_init(char *path, t_fdf *fdf)

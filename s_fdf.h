@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:00 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/18 13:40:41 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/23 19:40:25 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ typedef struct s_pixel
 
 typedef struct s_map
 {
-	int	width;
-	int	height;
+	int		width;
+	int		height;
+	int		fd;
+	char	*line;
+	char	**split;
 	t_pixel	*pixels;
 }	t_map;
 

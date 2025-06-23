@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/18 16:23:50 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/23 19:41:26 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void			clean_fdf(t_fdf *fdf);
 int				close_fdf(t_fdf *fdf);
 int				map_init(char *path, t_fdf *fdf);
 unsigned int	hex_rgb_to_int(char *hex);
+void			clean_split(char **split);
 #endif
