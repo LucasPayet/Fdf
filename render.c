@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/26 14:21:33 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/26 14:42:03 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	draw_line(t_img *img, t_pixel p0, t_pixel p1)
 	int	d;
 	int d2;
 
+	ft_printf("%d, %d\n", p0.x, p0.y);
 	dx = abs(p1.x - p0.x);
 	dy = abs(p1.y - p0.y);
 	sx = (p0.x < p1.x) ? 1 : -1;
@@ -55,18 +56,18 @@ void	draw_line(t_img *img, t_pixel p0, t_pixel p1)
 
 int	draw_iso(t_fdf *fdf)
 {
-	int			i;
+	int		i;
 	t_pixel	*pixels;
-	t_img		*img;
+	t_img	*img;
 
 	i = 0;
 	pixels = fdf->map.pixels;
 	img = &fdf->img;
 	while(i < fdf->map.width * fdf->map.height)
 	{
-		if (pixels[i + 1].x)
+		if (i + 1 < fdf->map.width * fdf->map.height)
 			draw_line(img, iso_proj(fdf, pixels[i]), iso_proj(fdf, pixels[i + 1]));
-		if (pixels[i + fdf->map.width].x)
+		if (i + fdf->map.width  < fdf->map.width * fdf->map.height)
 			draw_line(img, iso_proj(fdf, pixels[i]), iso_proj(fdf, pixels[i + fdf->map.width]));
 		i++;
 	}

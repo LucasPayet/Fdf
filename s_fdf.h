@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:00 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/24 15:49:05 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/26 14:29:41 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct	s_fdf
 	int		zoom;
 	int		offset_x;
 	int		offset_y;
-	int		angle_x;
-	int		angle_y;
-	int		angle_z;
+	double	angle_x;
+	double	angle_y;
+	double	angle_z;
 }	t_fdf;

@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/26 14:08:18 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/26 14:32:34 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ int				map_init(char *path, t_fdf *fdf);
 unsigned int	hex_rgb_to_int(char *hex);
 void			clean_split(char **split);
 t_pixel			iso_proj(t_fdf *fdf, t_pixel p);
+int				draw_iso(t_fdf *fdf);
 #endif
