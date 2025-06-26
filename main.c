@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/23 18:52:54 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/26 14:06:24 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 #define WIN_WIDTH 1000
 #define WIN_HEIGHT 1000
+#define ZOOM 50
+#define ANGLE_X 0.5
+#define	ANGLE_Y 0.5
+#define ANGLE_Z 0
 
 void info(t_fdf *fdf)
 {
@@ -33,6 +37,16 @@ void info(t_fdf *fdf)
 	ft_printf("\n###IMG###\nimg_p => %p;\naddr => %p;\nbits_p_pixel => %d;\nline_length => %d;\nendian => %d;\n", fdf->img.img, fdf->img.addr, fdf->img.bits_per_pixel, fdf->img.line_length, fdf->img.endian);
 }
 
+void	fdf_init(t_fdf *fdf)
+{
+	fdf->zoom = ZOOM;
+	fdf->angle_x = ANGLE_X;
+	fdf->angle_y = ANGLE_Y;
+	fdf->angle_z = ANGLE_Z;
+	fdf->offset_x = WIN_WIDTH / 2;
+	fdf->offset_y = WIN_HEIGHT / 2;
+}
+
 int	main(int ac, char *av[])
 {
 	t_fdf	fdf;
@@ -41,7 +55,8 @@ int	main(int ac, char *av[])
 	{
 		ft_putstr_fd("Wrong input", 2);
 		return (1);
-	}	
+	}
+	fdf_init(&fdf);
 	fdf.mlx.mlx = mlx_init();
 	fdf.mlx.win = mlx_new_window(fdf.mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "test");
 	fdf.img.img = mlx_new_image(fdf.mlx.mlx, 1000, 1000);
