@@ -6,19 +6,12 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/26 14:33:00 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:43 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "libft.h"
-
-#define WIN_WIDTH 1000
-#define WIN_HEIGHT 1000
-#define ZOOM 50
-#define ANGLE_X 0.5
-#define	ANGLE_Y 0.5
-#define ANGLE_Z 0
 
 void info(t_fdf *fdf)
 {
@@ -43,8 +36,8 @@ void	fdf_init(t_fdf *fdf)
 	fdf->angle_x = ANGLE_X;
 	fdf->angle_y = ANGLE_Y;
 	fdf->angle_z = ANGLE_Z;
-	fdf->offset_x = WIN_WIDTH / 2;
-	fdf->offset_y = WIN_HEIGHT / 2;
+	fdf->offset_x = 0;
+	fdf->offset_y = 0;
 }
 
 int	main(int ac, char *av[])
@@ -62,9 +55,9 @@ int	main(int ac, char *av[])
 	fdf.img.img = mlx_new_image(fdf.mlx.mlx, 1000, 1000);
 	fdf.img.addr = mlx_get_data_addr(fdf.img.img, &fdf.img.bits_per_pixel, &fdf.img.line_length, &fdf.img.endian);
 	map_init(av[1], &fdf);
+	info(&fdf);
 	draw_iso(&fdf);
 	mlx_put_image_to_window(fdf.mlx.mlx, fdf.mlx.win, fdf.img.img, 0, 0);
-	info(&fdf);
 	mlx_key_hook(fdf.mlx.win, input, &fdf);
 	mlx_hook(fdf.mlx.win, 17, 0, close_fdf, &fdf);
 	mlx_loop(fdf.mlx.mlx);

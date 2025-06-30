@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:42:02 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/23 19:40:02 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:34:37 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ int	set_pixel(t_map *map, int l, char **value)
 		sep = ft_strchr(value[i], ',');
 		if (!sep)
 		{
-			map->pixels[l + i].z = ft_atoi(value[i]);
+			map->pixels[l + i].z = ft_atoi(value[i]) * 10;
 		}
 		else
 		{
 			ft_strlcpy(z, value[i], (sep - value[i]));
-			map->pixels[l + i].z = ft_atoi(z);
+			map->pixels[l + i].z = ft_atoi(z) * 3;
 			ft_printf("%s\n", ++sep);
 			map->pixels[l + i].color = hex_rgb_to_int(++sep);
 		}
-		map->pixels[l + i].x = i;
-		map->pixels[l + i].y = l / map->width;
+		map->pixels[l + i].x = i * 40;
+		map->pixels[l + i].y = (l / map->width) * 40;
 		i++;
 	}
 	return (l + i);

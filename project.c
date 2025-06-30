@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:58:38 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/26 14:10:47 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/06/30 19:06:38 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ t_pixel	iso_proj(t_fdf *fdf, t_pixel p)
 
 	p = rotate(p, fdf);
 	np.x = (p.x - p.y) * cos(30 * M_PI/180);
-	np.y = (p.x + p.y) * cos(30 * M_PI/180) - p.z;
-	np.x = np.x * fdf->zoom + fdf->offset_x;
-	np.y = np.y * fdf->zoom + fdf->offset_y;
+	np.y = (p.x + p.y) * cos(100 * M_PI/180) - p.z;
+	np.x = np.x + fdf->offset_x;
+	np.y = np.y + fdf->offset_y;
 	np.color = p.color;
 	return (np);
 }
