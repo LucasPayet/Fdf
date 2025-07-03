@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/01 17:13:43 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/03 13:33:57 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ void info(t_fdf *fdf)
 void	fdf_init(t_fdf *fdf)
 {
 	fdf->zoom = ZOOM;
+	ft_printf("%d\n", fdf->zoom);
 	fdf->angle_x = ANGLE_X;
 	fdf->angle_y = ANGLE_Y;
 	fdf->angle_z = ANGLE_Z;
 	fdf->offset_x = 0;
 	fdf->offset_y = 0;
+	fdf->trans_x = 0;
+	fdf->trans_y = 0;
 }
 
 int	main(int ac, char *av[])

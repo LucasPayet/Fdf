@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/01 16:58:59 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/03 14:12:31 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,16 @@ void	update_offset(t_fdf *fdf, t_map *map)
 	minmax[3] = xy[0].y;
 	i = 1;
 
-	while (i < 4)
+	while (i < 3)
 	{
-		if (xy[i].x < minmax[0]) minmax[0] = xy[i].x;
-        if (xy[i].x > minmax[1]) minmax[1] = xy[i].x;
-        if (xy[i].y < minmax[2]) minmax[2] = xy[i].y;
-        if (xy[i].y > minmax[3]) minmax[3] = xy[i].y;
+		if (xy[i].x <= minmax[0]) minmax[0] = xy[i].x;
+        if (xy[i].x >= minmax[1]) minmax[1] = xy[i].x;
+        if (xy[i].y <= minmax[2]) minmax[2] = xy[i].y;
+        if (xy[i].y >= minmax[3]) minmax[3] = xy[i].y;
 		i++;
 	}
-
+	fdf->img.x_len = minmax[1] - minmax[0];
+	fdf->img.y_len = minmax[3] - minmax[2];
 	fdf->offset_x = (WIN_WIDTH - (minmax[1] - minmax[0])) / 2 - minmax[0];
 	fdf->offset_y = (WIN_HEIGHT - (minmax[3] - minmax[2])) / 2 - minmax[2];
 }
@@ -88,6 +89,7 @@ int	draw_iso(t_fdf *fdf)
 	pixels = fdf->map.pixels;
 	img = &fdf->img;
 	update_offset(fdf, &fdf->map);
+	ft_bzero(img->addr, (size_t)(fdf->map.width * fdf->map.height * 4));
 	while(i < fdf->map.width * fdf->map.height)
 	{
 		if (i + 1 < fdf->map.width * fdf->map.height && (i + 1) % fdf->map.width != 0)

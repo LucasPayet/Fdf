@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:00 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/01 11:05:17 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/03 13:17:16 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct	s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int 	x_len;
+	int		y_len;
 }	t_img;
 
 typedef struct	s_fdf
@@ -54,4 +56,6 @@ typedef struct	s_fdf
 	int		angle_x;
 	int		angle_y;
 	int		angle_z;
+	int		trans_x;
+	int		trans_y;
 }	t_fdf;

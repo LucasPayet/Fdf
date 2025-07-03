@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/01 17:32:44 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/03 13:55:52 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,18 @@
 #include <fcntl.h>
 #include <unistd.h>
 #define Esc	0xff1b
+#define Add 0xffab
+#define Sub 0xffad
+#define Left 0xff96 
+#define Up 0xff97
+#define Right 0xff98
+#define Down 0xff99
 #define WIN_WIDTH 1000
 #define WIN_HEIGHT 1000
-#define ZOOM 10
-#define ANGLE_X 30
-#define	ANGLE_Y 20
-#define ANGLE_Z 10
+#define ZOOM 20
+#define ANGLE_X 0
+#define	ANGLE_Y 0
+#define ANGLE_Z 0
 
 int 			input(int keycode, t_fdf *vars);
 void			clean_fdf(t_fdf *fdf);
