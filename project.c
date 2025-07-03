@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:58:38 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/30 19:06:38 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:02:03 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,21 @@
 
 t_pixel rotate(t_pixel p, t_fdf *fdf) {
     t_pixel tmp;
+	float	x;
+	float	y;
+	float	z;
 
-	tmp.y = p.y * cos(fdf->angle_x) - p.z * sin(fdf->angle_x);
-	tmp.z = p.y * sin(fdf->angle_x) + p.z * cos(fdf->angle_x);
+	x = fdf->angle_x * M_PI/180;
+	y = fdf->angle_y * M_PI/180;
+	z = fdf->angle_z * M_PI/180;
+	tmp.y = p.y * cos(x) - p.z * sin(x);
+	tmp.z = p.y * sin(x) + p.z * cos(x);
 	tmp.x = p.x;
-	p.x = tmp.x * cos(fdf->angle_y) + tmp.z * sin(fdf->angle_y);
-	p.z = -tmp.x * sin(fdf->angle_y) + tmp.z * cos(fdf->angle_y);
+	p.x = tmp.x * cos(y) + tmp.z * sin(y);
+	p.z = -tmp.x * sin(y) + tmp.z * cos(y);
 	p.y = tmp.y;
-	tmp.x = p.x * cos(fdf->angle_z) - p.y * sin(fdf->angle_z);
-	tmp.y = p.x * sin(fdf->angle_z) + p.y * cos(fdf->angle_z);
+	tmp.x = p.x * cos(z) - p.y * sin(z);
+	tmp.y = p.x * sin(z) + p.y * cos(z);
 	tmp.z = p.z;
 	return tmp;
 }
@@ -34,7 +40,7 @@ t_pixel	iso_proj(t_fdf *fdf, t_pixel p)
 
 	p = rotate(p, fdf);
 	np.x = (p.x - p.y) * cos(30 * M_PI/180);
-	np.y = (p.x + p.y) * cos(100 * M_PI/180) - p.z;
+	np.y = (p.x + p.y) * cos(30 * M_PI/180) - p.z;
 	np.x = np.x + fdf->offset_x;
 	np.y = np.y + fdf->offset_y;
 	np.color = p.color;

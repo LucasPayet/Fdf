@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/30 16:50:36 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/01 17:32:44 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 #define WIN_WIDTH 1000
 #define WIN_HEIGHT 1000
 #define ZOOM 10
-#define ANGLE_X 0.5
-#define	ANGLE_Y 0.5
-#define ANGLE_Z 0
+#define ANGLE_X 30
+#define	ANGLE_Y 20
+#define ANGLE_Z 10
 
 int 			input(int keycode, t_fdf *vars);
 void			clean_fdf(t_fdf *fdf);

@@ -6,7 +6,7 @@
 #    By: lupayet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/06 11:54:12 by lupayet           #+#    #+#              #
-#    Updated: 2025/06/26 14:30:16 by lupayet          ###   ########.fr        #
+#    Updated: 2025/07/01 17:30:55 by lupayet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,12 @@ SRC	= main.c input.c clean.c close.c map.c color.c render.c project.c ./Gnl/get_
 
 OBJ	= $(SRC:.c=.o)
 
-%.o: %.c
+%.o: %.c fdf.h
 	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 all: $(NAME)
 
-$(NAME): $(OBJ) s_fdf.h fdf.h
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L./minilibx-linux/ -lmlx -lXext -lX11 -lm libft.a -o $(NAME)
 
 clean:
