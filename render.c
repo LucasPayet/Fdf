@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/03 14:12:31 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/08 23:56:01 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	update_offset(t_fdf *fdf, t_map *map)
 	}
 	fdf->img.x_len = minmax[1] - minmax[0];
 	fdf->img.y_len = minmax[3] - minmax[2];
-	fdf->offset_x = (WIN_WIDTH - (minmax[1] - minmax[0])) / 2 - minmax[0];
-	fdf->offset_y = (WIN_HEIGHT - (minmax[3] - minmax[2])) / 2 - minmax[2];
+	fdf->offset_x = (WIN_WIDTH - (minmax[1] - minmax[0])) / 2;
+	fdf->offset_y = (WIN_HEIGHT - (minmax[3] - minmax[2])) / 2;
 }
 
 int	update_pixel(t_img *img, int x, int y, int color)
@@ -89,7 +89,12 @@ int	draw_iso(t_fdf *fdf)
 	pixels = fdf->map.pixels;
 	img = &fdf->img;
 	update_offset(fdf, &fdf->map);
-	ft_bzero(img->addr, (size_t)(fdf->map.width * fdf->map.height * 4));
+	ft_printf("%d ][ %d\n", fdf->offset_x, fdf->offset_y);
+	if (fdf->img.x_len > fdf->img.y_len)
+		fdf->zoom = (WIN_HEIGHT - 1) / fdf->map.width;
+	else
+		fdf->zoom = (WIN_WIDTH - 1) / fdf->map.height;
+	ft_bzero(img->addr, (size_t)(1000 * 1000 * 4));
 	while(i < fdf->map.width * fdf->map.height)
 	{
 		if (i + 1 < fdf->map.width * fdf->map.height && (i + 1) % fdf->map.width != 0)

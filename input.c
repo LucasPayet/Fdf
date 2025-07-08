@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/03 13:46:51 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/08 23:52:30 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	input(int keycode, t_fdf *fdf)
 	if (keycode == Esc)
 		close_fdf(fdf);
 	if (keycode == Left)
-		update_tx(fdf, -1);
-	if (keycode == Right)
 		update_tx(fdf, 1);
+	if (keycode == Right)
+		update_tx(fdf, -1);
 	if (keycode == Up)
-		update_ty(fdf, -1);
-	if (keycode == Down)
 		update_ty(fdf, 1);
+	if (keycode == Down)
+		update_ty(fdf, -1);
 	return (0);
 }

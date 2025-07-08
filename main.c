@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/03 13:33:57 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/09 00:20:29 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	fdf_init(t_fdf *fdf)
 	fdf->offset_y = 0;
 	fdf->trans_x = 0;
 	fdf->trans_y = 0;
+	fdf->img.x_len = 0;
+	fdf->img.y_len = 0;
 }
 
 int	main(int ac, char *av[])
@@ -59,6 +61,7 @@ int	main(int ac, char *av[])
 	fdf.img.addr = mlx_get_data_addr(fdf.img.img, &fdf.img.bits_per_pixel, &fdf.img.line_length, &fdf.img.endian);
 	map_init(av[1], &fdf);
 	info(&fdf);
+	draw_iso(&fdf);
 	draw_iso(&fdf);
 	mlx_put_image_to_window(fdf.mlx.mlx, fdf.mlx.win, fdf.img.img, 0, 0);
 	mlx_key_hook(fdf.mlx.win, input, &fdf);
