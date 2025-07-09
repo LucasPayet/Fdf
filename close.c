@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 00:05:10 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/23 17:57:40 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 01:06:30 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	close_fdf(t_fdf *fdf)
 		{
 			mlx_destroy_window(fdf->mlx.mlx, fdf->mlx.win);
 			mlx_destroy_display(fdf->mlx.mlx);
+			free(fdf->mlx.mlx);
 		}
-		free(fdf->mlx.mlx);
 	}
 	exit(0);
 	return (0);

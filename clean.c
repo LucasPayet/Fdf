@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 21:12:28 by lupayet           #+#    #+#             */
-/*   Updated: 2025/06/23 20:16:58 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 01:41:16 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	clean_split(char **split)
 	int	i;
 
 	i = 0;
+	if (!split)
+		return ;
 	while (split[i])
 	{
 		free(split[i]);
@@ -25,7 +27,6 @@ void	clean_split(char **split)
 		i++;
 	}
 	free(split);
-	split = NULL;
 }
 
 void	clean_map(t_map *map)
@@ -36,7 +37,7 @@ void	clean_map(t_map *map)
 		map->line = get_next_line(map->fd);
 	}
 	map->line = NULL;
-	clean_split(map->split);
+	//clean_split(map->split);
 	free(map->pixels);
 	map->pixels = NULL;
 }
@@ -45,16 +46,6 @@ void	clean_img(t_fdf *fdf)
 {
 	if (fdf->img.img)
 		mlx_destroy_image(fdf->mlx.mlx, fdf->img.img);
-/*	if (fdf->img.img)
-	{
-		free(fdf->img.img);
-		ft_printf("img\n");
-	}*/
-/*	if (img->addr)
-	{
-		free(img->addr);
-		ft_printf("addr\n");
-	}*/
 }
 
 void	clean_fdf(t_fdf *fdf)

@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/09 11:46:02 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 00:12:29 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	draw_iso(t_fdf *fdf)
 	pixels = fdf->map.pixels;
 	img = &fdf->img;
 	update_offset(fdf, &fdf->map);
-	ft_printf("%d ][ %d\n", fdf->img.x_len, fdf->img.y_len);
 	ft_bzero(img->addr, (size_t)(1000 * 1000 * 4));
 	while(i < fdf->map.width * fdf->map.height)
 	{

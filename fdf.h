@@ -6,34 +6,34 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/08 18:40:37 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/09 23:16:49 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#include "./minilibx-linux/mlx.h"
-#include "s_fdf.h"
-#include "libft.h"
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#define Esc	0xff1b
-#define Add 0xffab
-#define Sub 0xffad
-#define Left 0xff96 
-#define Up 0xff97
-#define Right 0xff98
-#define Down 0xff99
-#define WIN_WIDTH 1000
-#define WIN_HEIGHT 1000
-#define ZOOM 20
-#define ANGLE_X 0
-#define	ANGLE_Y 0
-#define ANGLE_Z 0
+# include "./minilibx-linux/mlx.h"
+# include "s_fdf.h"
+# include "libft.h"
+# include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
+# define ESC	0xff1b
+# define ADD 0xffab
+# define SUB 0xffad
+# define LEFT 0xff96 
+# define UP 0xff97
+# define RIGHT 0xff98
+# define DOWN 0xff99
+# define WIN_WIDTH 1000
+# define WIN_HEIGHT 1000
+# define ZOOM 20
+# define ANGLE_X 0
+# define ANGLE_Y 0
+# define ANGLE_Z 0
 
-int 			input(int keycode, t_fdf *vars);
+int				input(int keycode, t_fdf *vars);
 void			clean_fdf(t_fdf *fdf);
 int				close_fdf(t_fdf *fdf);
 int				map_init(char *path, t_fdf *fdf);
