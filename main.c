@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/09 00:20:29 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/09 16:00:08 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 void info(t_fdf *fdf)
 {
-	int	i;
+//	int	i;
 
-	i = 0;
+//	i = 0;
 	ft_printf("###MLX###\nmlx_p => %p;\nwin_p => %p;\n", fdf->mlx.mlx, fdf->mlx.win);
 	ft_printf("\n###MAP###\nwidth => %d;\nheight => %d;\nmap_p => %p;\n", fdf->map.width, fdf->map.height, fdf->map.pixels);
-	while (i < fdf->map.height * fdf->map.width)
+/*	while (i < fdf->map.height * fdf->map.width)
 	{
 		if (!(i % fdf->map.width))
 			ft_printf("\n");
 		ft_printf("(%d, %d, %d, %x);\n", fdf->map.pixels[i].x, fdf->map.pixels[i].y, fdf->map.pixels[i].z, fdf->map.pixels[i].color);
 		i++;
-	}
+	}*/
 	ft_printf("\n###IMG###\nimg_p => %p;\naddr => %p;\nbits_p_pixel => %d;\nline_length => %d;\nendian => %d;\n", fdf->img.img, fdf->img.addr, fdf->img.bits_per_pixel, fdf->img.line_length, fdf->img.endian);
 }
 
@@ -62,6 +62,11 @@ int	main(int ac, char *av[])
 	map_init(av[1], &fdf);
 	info(&fdf);
 	draw_iso(&fdf);
+	if (fdf.img.x_len > fdf.img.y_len)
+		fdf.zoom = (WIN_HEIGHT - 50) / (fdf.map.width + (fdf.img.x_len / fdf.map.width));
+	else
+		fdf.zoom = (WIN_WIDTH - 50) / (fdf.map.height + (fdf.img.y_len / fdf.map.height));
+	fdf.def_zoom = fdf.zoom;
 	draw_iso(&fdf);
 	mlx_put_image_to_window(fdf.mlx.mlx, fdf.mlx.win, fdf.img.img, 0, 0);
 	mlx_key_hook(fdf.mlx.win, input, &fdf);
