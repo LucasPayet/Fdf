@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:00 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 00:12:43 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 15:57:37 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_fdf
 	t_mlx	mlx;
 	t_map	map;
 	t_img	img;
+	t_pixel	(*proj)(struct s_fdf *, t_pixel);
 	int		def_zoom;
 	int		zoom;
 	int		offset_x;

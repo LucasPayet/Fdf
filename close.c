@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 00:05:10 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 01:06:30 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 16:21:42 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	close_fdf(t_fdf *fdf)
 {
 	clean_fdf(fdf);
-	ft_printf("clean\n");
 	if (fdf->mlx.mlx)
 	{
 		if (fdf->mlx.win)

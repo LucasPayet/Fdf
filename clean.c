@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 21:12:28 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 01:41:16 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 16:42:45 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	clean_map(t_map *map)
 		map->line = get_next_line(map->fd);
 	}
 	map->line = NULL;
-	//clean_split(map->split);
 	free(map->pixels);
 	map->pixels = NULL;
 }

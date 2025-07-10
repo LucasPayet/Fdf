@@ -6,11 +6,11 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 11:37:20 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 11:52:23 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 13:15:35 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include fdf.h
+#include "fdf.h"
 
 void	update_angle_x(t_fdf *fdf, int x)
 {

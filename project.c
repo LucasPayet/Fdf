@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:58:38 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/09 23:33:57 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 16:10:20 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,24 @@ t_pixel	iso_proj(t_fdf *fdf, t_pixel p)
 	p = rotate(p, fdf);
 	np.x = (p.x - p.y) * cos(30 * M_PI / 180);
 	np.y = (p.x + p.y) * cos(30 * M_PI / 180) - p.z;
+	np.x = np.x + fdf->offset_x + fdf->trans_x * (fdf->img.x_len / 100);
+	np.y = np.y + fdf->offset_y + fdf->trans_y * (fdf->img.y_len / 100);
+	np.color = p.color;
+	return (np);
+}
+
+t_pixel	para_proj(t_fdf *fdf, t_pixel p)
+{
+	t_pixel	np;
+	int		d;
+
+	d = fdf->zoom;
+	p.x *= fdf->zoom;
+	p.y *= fdf->zoom;
+	p.z *= fdf->zoom;
+	p = rotate(p, fdf);
+	np.x = p.x;
+	np.y = p.y;
 	np.x = np.x + fdf->offset_x + fdf->trans_x * (fdf->img.x_len / 100);
 	np.y = np.y + fdf->offset_y + fdf->trans_y * (fdf->img.y_len / 100);
 	np.color = p.color;

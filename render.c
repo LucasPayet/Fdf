@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 00:12:29 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 16:31:57 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	update_offset(t_fdf *fdf, t_map *map)
 	int	minmax[4];
 	int	i;
 
-	xy[0] = iso_proj(fdf, map->pixels[0]);
-	xy[1] = iso_proj(fdf, map->pixels[map->width - 1]);
-	xy[2] = iso_proj(fdf, map->pixels[map->width * (map->height - 1) - 1]);
-	xy[3] = iso_proj(fdf, map->pixels[map->width * map->height - 1]);
+	xy[0] = (*fdf->proj)(fdf, map->pixels[0]);
+	xy[1] = (*fdf->proj)(fdf, map->pixels[map->width - 1]);
+	xy[2] = (*fdf->proj)(fdf, map->pixels[map->width * (map->height - 1) - 1]);
+	xy[3] = (*fdf->proj)(fdf, map->pixels[map->width * map->height - 1]);
 	minmax[0] = xy[0].x;
 	minmax[1] = xy[0].x;
 	minmax[2] = xy[0].y;
@@ -93,9 +93,9 @@ int	draw_iso(t_fdf *fdf)
 	while(i < fdf->map.width * fdf->map.height)
 	{
 		if (i + 1 < fdf->map.width * fdf->map.height && (i + 1) % fdf->map.width != 0)
-			draw_line(img, iso_proj(fdf, pixels[i]), iso_proj(fdf, pixels[i + 1]));
+			draw_line(img, (*fdf->proj)(fdf, pixels[i]), (*fdf->proj)(fdf, pixels[i + 1]));
 		if (i + fdf->map.width  < fdf->map.width * fdf->map.height)
-			draw_line(img, iso_proj(fdf, pixels[i]), iso_proj(fdf, pixels[i + fdf->map.width]));
+				draw_line(img, (*fdf->proj)(fdf, pixels[i]), (*fdf->proj)(fdf, pixels[i + fdf->map.width]));
 		i++;
 	}
 	return (1);

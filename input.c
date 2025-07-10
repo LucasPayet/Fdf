@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/09 23:24:58 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 16:14:21 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,29 @@ int	input(int keycode, t_fdf *fdf)
 		update_zoom(fdf, 1);
 	if (keycode == SUB)
 		update_zoom(fdf, -1);
+	if (keycode == X_A)
+		update_angle_x(fdf, 5);
+	if (keycode == X_S)
+		update_angle_x(fdf, -5);
+	if (keycode == Y_A)
+		update_angle_y(fdf, 5);
+	if (keycode == Y_S)
+		update_angle_y(fdf, -5);
+	if (keycode == Z_A)
+		update_angle_z(fdf, 5);
+	if (keycode == Z_S)
+		update_angle_z(fdf, -5);
+	if (keycode == ISO)
+	{
+		fdf->proj = iso_proj;
+		draw_iso(fdf);
+		mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
+	}
+	if (keycode == PARA)
+	{
+		fdf->proj = para_proj;
+		draw_iso(fdf);
+		mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
+	}
 	return (0);
 }
