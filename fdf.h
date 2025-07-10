@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/09 23:16:49 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 11:56:22 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include <fcntl.h>
 # include <unistd.h>
 # define ESC	0xff1b
-# define ADD 0xffab
-# define SUB 0xffad
-# define LEFT 0xff96 
-# define UP 0xff97
-# define RIGHT 0xff98
-# define DOWN 0xff99
+# define ADD 0x003d
+# define SUB 0x002d
+# define LEFT 0x0061 
+# define UP 0x0077
+# define RIGHT 0x0064
+# define DOWN 0x0073
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 1000
 # define ZOOM 20
@@ -41,4 +41,7 @@ unsigned int	hex_rgb_to_int(char *hex);
 void			clean_split(char **split);
 t_pixel			iso_proj(t_fdf *fdf, t_pixel p);
 int				draw_iso(t_fdf *fdf);
+void			update_angle_x(t_fdf *fdf, int x);
+void			update_angle_y(t_fdf *fdf, int y);
+void			update_angle_z(t_fdf *fdf, int z);
 #endif
