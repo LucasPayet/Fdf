@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 16:12:58 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 23:22:06 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ unsigned int	hex_rgb_to_int(char *hex);
 void			clean_split(char **split);
 t_pixel			iso_proj(t_fdf *fdf, t_pixel p);
 t_pixel			para_proj(t_fdf *fdf, t_pixel p);
+void			update_offset(t_fdf *fdf, t_map *map);
 int				draw_iso(t_fdf *fdf);
 void			update_angle_x(t_fdf *fdf, int x);
 void			update_angle_y(t_fdf *fdf, int y);

@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 15:55:39 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 23:20:02 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	fdf_init(t_fdf *fdf)
 
 void	set_proj(t_fdf *fdf)
 {
+	update_offset(fdf, &fdf->map);
 	draw_iso(fdf);
 	if (fdf->img.x_len > fdf->img.y_len)
 		fdf->zoom = (WIN_HEIGHT - 50) / (fdf->map.width

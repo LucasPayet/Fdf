@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 16:31:57 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/11 00:20:19 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 void	update_offset(t_fdf *fdf, t_map *map)
 {
 	t_pixel	xy[4];
-	int	minmax[4];
-	int	i;
+	int		minmax[4];
+	int		i;
 
 	xy[0] = (*fdf->proj)(fdf, map->pixels[0]);
 	xy[1] = (*fdf->proj)(fdf, map->pixels[map->width - 1]);
@@ -28,13 +28,16 @@ void	update_offset(t_fdf *fdf, t_map *map)
 	minmax[2] = xy[0].y;
 	minmax[3] = xy[0].y;
 	i = 1;
-
 	while (i < 3)
 	{
-		if (xy[i].x <= minmax[0]) minmax[0] = xy[i].x;
-        if (xy[i].x >= minmax[1]) minmax[1] = xy[i].x;
-        if (xy[i].y <= minmax[2]) minmax[2] = xy[i].y;
-        if (xy[i].y >= minmax[3]) minmax[3] = xy[i].y;
+		if (xy[i].x <= minmax[0])
+			minmax[0] = xy[i].x;
+		if (xy[i].x >= minmax[1])
+			minmax[1] = xy[i].x;
+		if (xy[i].y <= minmax[2])
+			minmax[2] = xy[i].y;
+		if (xy[i].y >= minmax[3])
+			minmax[3] = xy[i].y;
 		i++;
 	}
 	fdf->img.x_len = minmax[1] - minmax[0];
@@ -88,7 +91,6 @@ int	draw_iso(t_fdf *fdf)
 	i = 0;
 	pixels = fdf->map.pixels;
 	img = &fdf->img;
-	update_offset(fdf, &fdf->map);
 	ft_bzero(img->addr, (size_t)(1000 * 1000 * 4));
 	while(i < fdf->map.width * fdf->map.height)
 	{

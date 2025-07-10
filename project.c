@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:58:38 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 16:10:20 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/10 19:11:02 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,16 @@ t_pixel	rotate(t_pixel p, t_fdf *fdf)
 	float	x;
 	float	y;
 	float	z;
+	int		cx;
+	int		cy;
 
+	cx = ((fdf->map.width - 1) * fdf->zoom) / 2;
+	cy = ((fdf->map.height - 1) * fdf->zoom) / 2;
 	x = fdf->angle_x * M_PI / 180;
 	y = fdf->angle_y * M_PI / 180;
 	z = fdf->angle_z * M_PI / 180;
+	p.y -= cy;
+	p.x -= cx;
 	tmp.y = p.y * cos(x) - p.z * sin(x);
 	tmp.z = p.y * sin(x) + p.z * cos(x);
 	tmp.x = p.x;
@@ -32,6 +38,8 @@ t_pixel	rotate(t_pixel p, t_fdf *fdf)
 	tmp.x = p.x * cos(z) - p.y * sin(z);
 	tmp.y = p.x * sin(z) + p.y * cos(z);
 	tmp.z = p.z;
+	p.x += cx;
+	p.y += cy;
 	return (tmp);
 }
 
@@ -54,9 +62,7 @@ t_pixel	iso_proj(t_fdf *fdf, t_pixel p)
 t_pixel	para_proj(t_fdf *fdf, t_pixel p)
 {
 	t_pixel	np;
-	int		d;
 
-	d = fdf->zoom;
 	p.x *= fdf->zoom;
 	p.y *= fdf->zoom;
 	p.z *= fdf->zoom;
