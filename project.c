@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:58:38 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 19:11:02 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/11 13:12:40 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ t_pixel	rotate(t_pixel p, t_fdf *fdf)
 	tmp.x = p.x * cos(z) - p.y * sin(z);
 	tmp.y = p.x * sin(z) + p.y * cos(z);
 	tmp.z = p.z;
-	p.x += cx;
-	p.y += cy;
+	tmp.x += cx;
+	tmp.y += cy;
 	return (tmp);
 }
 

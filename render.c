@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/11 00:20:19 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/11 16:39:00 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,15 @@
 void	update_offset(t_fdf *fdf, t_map *map)
 {
 	t_pixel	xy[4];
-	int		minmax[4];
-	int		i;
 
 	xy[0] = (*fdf->proj)(fdf, map->pixels[0]);
 	xy[1] = (*fdf->proj)(fdf, map->pixels[map->width - 1]);
 	xy[2] = (*fdf->proj)(fdf, map->pixels[map->width * (map->height - 1) - 1]);
 	xy[3] = (*fdf->proj)(fdf, map->pixels[map->width * map->height - 1]);
-	minmax[0] = xy[0].x;
-	minmax[1] = xy[0].x;
-	minmax[2] = xy[0].y;
-	minmax[3] = xy[0].y;
-	i = 1;
-	while (i < 3)
-	{
-		if (xy[i].x <= minmax[0])
-			minmax[0] = xy[i].x;
-		if (xy[i].x >= minmax[1])
-			minmax[1] = xy[i].x;
-		if (xy[i].y <= minmax[2])
-			minmax[2] = xy[i].y;
-		if (xy[i].y >= minmax[3])
-			minmax[3] = xy[i].y;
-		i++;
-	}
-	fdf->img.x_len = minmax[1] - minmax[0];
-	fdf->img.y_len = minmax[3] - minmax[2];
-	fdf->offset_x = (WIN_WIDTH - (minmax[1] - minmax[0])) / 2;
-	fdf->offset_y = (WIN_HEIGHT - (minmax[3] - minmax[2])) / 2;
+	fdf->img.x_len = xy[1].x - xy[0].x;
+	fdf->img.y_len = xy[2].y - xy[0].y;
+	fdf->offset_x = (WIN_WIDTH) / 2;
+	fdf->offset_y = (WIN_HEIGHT - (xy[2].y - xy[0].y)) / 2;
 }
 
 int	update_pixel(t_img *img, int x, int y, int color)
@@ -57,28 +38,30 @@ int	update_pixel(t_img *img, int x, int y, int color)
 
 void	draw_line(t_img *img, t_pixel p0, t_pixel p1)
 {
-	int	dx;
-	int dy;
-	int	sx;
-	int	sy;
-	int	d;
-	int d2;
+	t_draw	dr;
 	
-	dx = abs(p1.x - p0.x);
-	dy = abs(p1.y - p0.y);
-	sx = (p0.x < p1.x) ? 1 : -1;
-    sy = (p0.y < p1.y) ? 1 : -1;
-	d = dx - dy;
-
+	dr.dx = ft_abs(p1.x - p0.x);
+	dr.dy = ft_abs(p1.y - p0.y);
+	dr.sx = slope(p0.x, p1.x);
+    dr.sy = slope(p0.y, p1.y);
+	dr.d = dr.dx - dr.dy;
 	while(1)
 	{
 		if (!(p0.y >= WIN_HEIGHT || p0.x >= WIN_WIDTH || p0.y < 0 || p0.x < 0))
 			update_pixel(img, p0.x, p0.y, p0.color);
 		if (p0.x == p1.x && p0.y == p1.y)
 			break;
-		d2 = 2 * d;
-		if (d2 > -dy) {d -= dy; p0.x += sx;}
-        if (d2 < dx) {d += dx; p0.y += sy;}
+		dr.d2 = 2 * dr.d;
+		if (dr.d2 > -dr.dy)
+		{
+			dr.d -= dr.dy; 
+			p0.x += dr.sx;
+		}
+        if (dr.d2 < dr.dx)
+		{
+			dr.d += dr.dx;
+			p0.y += dr.sy;
+		}
 	}
 }
 

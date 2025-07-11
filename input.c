@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 16:14:21 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/11 13:47:43 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	update_ty(t_fdf *fdf, int m)
 void	update_zoom(t_fdf *fdf, int z)
 {
 	fdf->zoom += z;
+	update_offset(fdf, &fdf->map);
 	draw_iso(fdf);
 	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
 }
@@ -64,12 +65,14 @@ int	input(int keycode, t_fdf *fdf)
 	if (keycode == ISO)
 	{
 		fdf->proj = iso_proj;
+		update_offset(fdf, &fdf->map);
 		draw_iso(fdf);
 		mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
 	}
 	if (keycode == PARA)
 	{
 		fdf->proj = para_proj;
+		update_offset(fdf, &fdf->map);
 		draw_iso(fdf);
 		mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
 	}

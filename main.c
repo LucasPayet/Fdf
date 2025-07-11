@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 23:20:02 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/11 13:12:17 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	set_proj(t_fdf *fdf)
 		fdf->zoom = (WIN_WIDTH - 50) / (fdf->map.height
 				+ (fdf->img.y_len / fdf->map.height));
 	fdf->def_zoom = fdf->zoom;
+	update_offset(fdf, &fdf->map);
 	draw_iso(fdf);
 	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
 }

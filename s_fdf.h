@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:00 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 15:57:37 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/11 16:38:36 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ typedef struct s_img
 	int		x_len;
 	int		y_len;
 }	t_img;
+
+typedef struct draw
+{
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	d;
+	int	d2;
+}	t_draw;
 
 typedef struct s_fdf
 {
