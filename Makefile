@@ -6,7 +6,7 @@
 #    By: lupayet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/06 11:54:12 by lupayet           #+#    #+#              #
-#    Updated: 2025/07/11 16:14:46 by lupayet          ###   ########.fr        #
+#    Updated: 2025/07/15 12:00:28 by lupayet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,22 @@ CC	= cc
 AR = ar rs
 CFLAGS	= -Wall -Wextra -Werror -g
 RM = rm -f
+LIBFT_P = ./libft/
+MLX_P = ./minilibx-linux/
+
 
 SRC	= main.c input.c input2.c clean.c close.c map.c color.c draw.c render.c \
 		project.c ./Gnl/get_next_line.c ./Gnl/get_next_line_utils.c
 
 OBJ	= $(SRC:.c=.o)
 
-%.o: %.c fdf.h s_fdf.h
+%.o: %.c fdf.h s_fdf.h MLX
 	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -g -Lmlx_linux -lmlx_Linux -L./minilibx-linux/ -lmlx -lXext -lX11 -lm libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L./minilibx-linux/ -lmlx -lXext -lX11 -lm libft.a -o $(NAME)
 
 clean:
 	rm -f $(OBJ)

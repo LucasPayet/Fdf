@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/11 13:47:43 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/15 11:28:10 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ void	update_ty(t_fdf *fdf, int m)
 
 void	update_zoom(t_fdf *fdf, int z)
 {
+	if (fdf->zoom + z < 0)
+		return ;
 	fdf->zoom += z;
 	update_offset(fdf, &fdf->map);
 	draw_iso(fdf);
 	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
 }
 
-int	input(int keycode, t_fdf *fdf)
+void	keybinds(int keycode, t_fdf *fdf)
 {
 	if (keycode == ESC)
 		close_fdf(fdf);
@@ -50,6 +52,11 @@ int	input(int keycode, t_fdf *fdf)
 		update_zoom(fdf, 1);
 	if (keycode == SUB)
 		update_zoom(fdf, -1);
+}
+
+int	input(int keycode, t_fdf *fdf)
+{
+	keybinds(keycode, fdf);
 	if (keycode == X_A)
 		update_angle_x(fdf, 5);
 	if (keycode == X_S)
