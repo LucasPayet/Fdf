@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/11 16:15:56 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/15 13:43:13 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "./minilibx-linux/mlx.h"
 # include "s_fdf.h"
-# include "libft.h"
+# include "./libft/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
