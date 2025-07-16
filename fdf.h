@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 14:11:00 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/16 17:47:56 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int				input(int keycode, t_fdf *vars);
 void			clean_fdf(t_fdf *fdf);
 int				close_fdf(t_fdf *fdf);
 int				map_init(char *path, t_fdf *fdf);
-unsigned int	hex_rgb_to_int(char *hex);
+int				hex_rgb_to_int(char *hex);
 void			clean_split(char **split);
 t_pixel			iso_proj(t_fdf *fdf, t_pixel p);
 t_pixel			para_proj(t_fdf *fdf, t_pixel p);

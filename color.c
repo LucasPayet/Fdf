@@ -6,9 +6,11 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:38:43 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/09 23:14:00 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/16 18:18:00 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "fdf.h"
 
 int	hex_to_int(char c)
 {
@@ -21,23 +23,27 @@ int	hex_to_int(char c)
 	return (-1);
 }
 
-unsigned int	hex_rgb_to_int(char *hex)
+int	hex_rgb_to_int(char *hex)
 {
-	unsigned int	i;
-	int				d;
-	unsigned int	color;
+	int	i;
+	int	d;
+	int	color;
 
-	if (*hex == '#')
-		hex++;
 	i = 0;
+	if (hex[i] == '0')
+		i++;
+	if (hex[i] == 'x')
+		i++;
 	color = 0;
-	while (i < 6)
+	while (i <= 7)
 	{
-		d = hex_to_int(*hex);
+		d = hex_to_int(hex[i]);
+		ft_printf("%d ", d);
 		if (d == -1)
 			return (16777215);
 		color = (color << 4) | d;
 		i++;
 	}
+	ft_printf("\n%d > %x\n", color, color);
 	return (color);
 }

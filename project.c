@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:58:38 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 14:29:09 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/16 18:37:52 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_pixel	rotate(t_pixel p, t_fdf *fdf)
 	tmp.z = p.z;
 	tmp.x += rt.cx;
 	tmp.y += rt.cy;
+	tmp.color = p.color;
 	return (tmp);
 }
 
