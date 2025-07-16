@@ -6,7 +6,7 @@
 #    By: lupayet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/06 11:54:12 by lupayet           #+#    #+#              #
-#    Updated: 2025/07/16 15:41:08 by lupayet          ###   ########.fr        #
+#    Updated: 2025/07/17 00:42:45 by lupayet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ MLX = $(MLX_P)libmlx_Linux.a
 
 
 SRC	= main.c input.c input2.c clean.c close.c map.c color.c draw.c render.c \
-		project.c ./Gnl/get_next_line.c ./Gnl/get_next_line_utils.c
+		project.c ./Gnl/get_next_line.c ./Gnl/get_next_line_utils.c \
+		color_utils.c gradiant.c
 
 OBJ	= $(SRC:.c=.o)
 
@@ -49,7 +50,7 @@ $(NAME): $(MLX) $(LIBFT) $(OBJ)
 	@echo "> FDF READY"
 
 clean:
-	@make clean -C $(MLX_P) 1>/dev/null
+	@make clean -C $(MLX_P) 1>/dev/null 2>/dev/null
 	@make clean -C $(LIBFT_P) 1>/dev/null
 	@rm -f $(OBJ)
 

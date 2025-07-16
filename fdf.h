@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 17:47:56 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/17 00:48:17 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,10 @@ void			update_angle_z(t_fdf *fdf, int z);
 int				ft_abs(int n);
 int				slope(int n0, int n1);
 void			update_img(t_fdf *fdf);
+int				get_t(int trgb);
+int				get_r(int trgb);
+int				get_g(int trgb);
+int				get_b(int trgb);
+int				create_trgb(int r, int g, int b);
+int				get_gradiant(t_pixel s, t_pixel e, t_pixel c);
 #endif

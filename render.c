@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 18:32:04 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/17 00:38:43 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,9 @@ void	direction(t_draw *dr, t_pixel *p0)
 void	draw_line(t_img *img, t_pixel p0, t_pixel p1)
 {
 	t_draw	dr;
+	t_pixel	po;
 
+	po = p0;
 	dr.dx = ft_abs(p1.x - p0.x);
 	dr.dy = ft_abs(p1.y - p0.y);
 	dr.sx = slope(p0.x, p1.x);
@@ -78,12 +80,12 @@ void	draw_line(t_img *img, t_pixel p0, t_pixel p1)
 	while (1)
 	{
 		if (!(p0.y >= WIN_HEIGHT || p0.x >= WIN_WIDTH || p0.y < 0 || p0.x < 0))
-			update_pixel(img, p0.x, p0.y, p0.color);
+			update_pixel(img, p0.x, p0.y, get_gradiant(po, p1, p0));
 		if (p0.x == p1.x && p0.y == p1.y)
 			break ;
 		dr.d2 = 2 * dr.d;
 		direction(&dr, &p0);
-		switch_color(dr.sx, p1.x, &p0, p1.color);
+		//switch_color(dr.sx, p1.x, &p0, p1.color);
 	}
 }
 
