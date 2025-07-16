@@ -6,12 +6,11 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/11 13:12:17 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/16 13:43:27 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "libft.h"
 
 void	fdf_init(t_fdf *fdf)
 {
@@ -27,6 +26,7 @@ void	fdf_init(t_fdf *fdf)
 	fdf->trans_y = 0;
 	fdf->img.x_len = 0;
 	fdf->img.y_len = 0;
+	fdf->z_mod = 0;
 }
 
 void	set_proj(t_fdf *fdf)

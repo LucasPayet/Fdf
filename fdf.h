@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/15 13:43:13 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/16 14:11:00 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "./minilibx-linux/mlx.h"
 # include "s_fdf.h"
-# include "./libft/libft.h"
+# include "./Libft/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
@@ -56,4 +56,5 @@ void			update_angle_y(t_fdf *fdf, int y);
 void			update_angle_z(t_fdf *fdf, int z);
 int				ft_abs(int n);
 int				slope(int n0, int n1);
+void			update_img(t_fdf *fdf);
 #endif

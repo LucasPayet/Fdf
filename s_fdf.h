@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:00 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/11 16:38:36 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/16 14:29:43 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,15 @@ typedef struct draw
 	int	d2;
 }	t_draw;
 
+typedef struct rotate
+{
+	float   x;
+	float   y;
+	float   z;
+	int     cx;
+	int     cy;
+}	t_rot;
+
 typedef struct s_fdf
 {
 	t_mlx	mlx;
@@ -70,6 +79,5 @@ typedef struct s_fdf
 	int		angle_z;
 	int		trans_x;
 	int		trans_y;
-	int		prev_mouse_x;
-	int		prev_mouse_y;
+	int		z_mod;
 }	t_fdf;

@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/15 11:28:10 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/16 14:17:58 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 void	update_tx(t_fdf *fdf, int m)
 {
 	fdf->trans_x += m;
-	draw_iso(fdf);
-	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
+	update_img(fdf);
 }
 
 void	update_ty(t_fdf *fdf, int m)
 {
 	fdf->trans_y += m;
-	draw_iso(fdf);
-	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
+	update_img(fdf);
 }
 
 void	update_zoom(t_fdf *fdf, int z)
@@ -32,8 +30,7 @@ void	update_zoom(t_fdf *fdf, int z)
 		return ;
 	fdf->zoom += z;
 	update_offset(fdf, &fdf->map);
-	draw_iso(fdf);
-	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
+	update_img(fdf);
 }
 
 void	keybinds(int keycode, t_fdf *fdf)
@@ -52,6 +49,16 @@ void	keybinds(int keycode, t_fdf *fdf)
 		update_zoom(fdf, 1);
 	if (keycode == SUB)
 		update_zoom(fdf, -1);
+	if (keycode == 0x005b)
+	{
+		fdf->z_mod -= 1;
+		update_img(fdf);
+	}
+	if (keycode == 0x005d)
+	{
+		fdf->z_mod += 1;
+		update_img(fdf);
+	}	
 }
 
 int	input(int keycode, t_fdf *fdf)
@@ -69,19 +76,14 @@ int	input(int keycode, t_fdf *fdf)
 		update_angle_z(fdf, 5);
 	if (keycode == Z_S)
 		update_angle_z(fdf, -5);
-	if (keycode == ISO)
+	if (keycode == ISO || keycode == PARA)
 	{
-		fdf->proj = iso_proj;
+		if (keycode == ISO)
+			fdf->proj = iso_proj;
+		else
+			fdf->proj = para_proj;
 		update_offset(fdf, &fdf->map);
-		draw_iso(fdf);
-		mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
-	}
-	if (keycode == PARA)
-	{
-		fdf->proj = para_proj;
-		update_offset(fdf, &fdf->map);
-		draw_iso(fdf);
-		mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
+		update_img(fdf);
 	}
 	return (0);
 }
