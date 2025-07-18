@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:38:43 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 18:18:00 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 13:27:56 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,10 @@ int	hex_rgb_to_int(char *hex)
 	while (i <= 7)
 	{
 		d = hex_to_int(hex[i]);
-		ft_printf("%d ", d);
 		if (d == -1)
 			return (16777215);
 		color = (color << 4) | d;
 		i++;
 	}
-	ft_printf("\n%d > %x\n", color, color);
 	return (color);
 }

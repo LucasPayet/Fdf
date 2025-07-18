@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:42:02 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 18:22:41 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 13:26:06 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	set_pixel(t_map *map, int l, char **value)
 		}
 		else
 		{
-			ft_printf("%s\n", sep);
 			ft_strlcpy(z, value[i], (sep - value[i]));
 			map->pixels[l + i].z = ft_atoi(z);
 			map->pixels[l + i].color = hex_rgb_to_int(++sep);

@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/17 00:38:43 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 12:58:28 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,22 @@ int	update_pixel(t_img *img, int x, int y, int color)
 	int	offset;
 
 	offset = (img->line_length * y) + (x * (img->bits_per_pixel / 8));
-//	ft_printf("%d %x\n", color, color);
 	*(unsigned int *)(img->addr + offset) = color;
-		//16711680;
 	return (1);
-}
-
-void	switch_color(int sx, int p_x1, t_pixel *p, int p1_color)
-{
-	if (sx > 0)
-	{
-		if (p->x > p_x1 % 2)
-			p->color = p1_color;
-	}
-	else
-	{
-		if (p->x < p_x1 % 2)
-			p->color = p1_color;
-	}
 }
 
 void	direction(t_draw *dr, t_pixel *p0)
 {
-		if (dr->d2 > -dr->dy)
-		{
-			dr->d -= dr->dy;
-			p0->x += dr->sx;
-		}
-		if (dr->d2 < dr->dx)
-		{
-			dr->d += dr->dx;
-			p0->y += dr->sy;
-		}
+	if (dr->d2 > -dr->dy)
+	{
+		dr->d -= dr->dy;
+		p0->x += dr->sx;
+	}
+	if (dr->d2 < dr->dx)
+	{
+		dr->d += dr->dx;
+		p0->y += dr->sy;
+	}
 }
 
 void	draw_line(t_img *img, t_pixel p0, t_pixel p1)
@@ -85,7 +69,6 @@ void	draw_line(t_img *img, t_pixel p0, t_pixel p1)
 			break ;
 		dr.d2 = 2 * dr.d;
 		direction(&dr, &p0);
-		//switch_color(dr.sx, p1.x, &p0, p1.color);
 	}
 }
 
