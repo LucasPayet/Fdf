@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/18 15:00:42 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 18:33:04 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	fdf_init(t_fdf *fdf)
 	fdf->img.x_len = 0;
 	fdf->img.y_len = 0;
 	fdf->z_mod = 0;
+	fdf->map.line = NULL;
+	fdf->map.pixels = NULL;
 }
 
 void	set_proj(t_fdf *fdf)

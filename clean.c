@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 21:12:28 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/18 15:10:38 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 18:25:05 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	clean_map(t_map *map)
 {
 	while (map->line)
 	{
+		ft_printf("%p\n", *map->line);
 		free(map->line);
 		map->line = get_next_line(map->fd);
 	}
