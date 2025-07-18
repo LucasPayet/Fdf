@@ -6,9 +6,12 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:39:00 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 14:29:43 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 14:51:10 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef S_FDF_H
+# define S_FDF_H
 
 typedef struct s_mlx
 {
@@ -57,11 +60,11 @@ typedef struct draw
 
 typedef struct rotate
 {
-	float   x;
-	float   y;
-	float   z;
-	int     cx;
-	int     cy;
+	float	x;
+	float	y;
+	float	z;
+	int		cx;
+	int		cy;
 }	t_rot;
 
 typedef struct s_fdf
@@ -69,7 +72,7 @@ typedef struct s_fdf
 	t_mlx	mlx;
 	t_map	map;
 	t_img	img;
-	t_pixel	(*proj)(struct s_fdf *, t_pixel);
+	int		proj;
 	int		def_zoom;
 	int		zoom;
 	int		offset_x;
@@ -81,3 +84,5 @@ typedef struct s_fdf
 	int		trans_y;
 	int		z_mod;
 }	t_fdf;
+
+#endif

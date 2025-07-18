@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 14:17:58 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 15:04:05 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	keybinds(int keycode, t_fdf *fdf)
 		update_zoom(fdf, 1);
 	if (keycode == SUB)
 		update_zoom(fdf, -1);
-	if (keycode == 0x005b)
+	if (keycode == ZM_S)
 	{
 		fdf->z_mod -= 1;
 		update_img(fdf);
 	}
-	if (keycode == 0x005d)
+	if (keycode == ZM_A)
 	{
 		fdf->z_mod += 1;
 		update_img(fdf);
@@ -79,9 +79,9 @@ int	input(int keycode, t_fdf *fdf)
 	if (keycode == ISO || keycode == PARA)
 	{
 		if (keycode == ISO)
-			fdf->proj = iso_proj;
+			fdf->proj = 1;
 		else
-			fdf->proj = para_proj;
+			fdf->proj = 2;
 		update_offset(fdf, &fdf->map);
 		update_img(fdf);
 	}

@@ -6,12 +6,12 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 21:12:28 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/10 16:42:45 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 15:10:38 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "./Gnl/get_next_line.h"
+#include "./gnl/get_next_line.h"
 
 void	clean_split(char **split)
 {

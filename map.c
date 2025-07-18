@@ -6,12 +6,12 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:42:02 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/18 13:26:06 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 15:10:19 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "./Gnl/get_next_line.h"
+#include "./gnl/get_next_line.h"
 
 static int	count_word(const char *str, char c)
 {

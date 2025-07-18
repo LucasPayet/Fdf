@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 11:20:05 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/17 00:48:17 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 15:10:08 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "./minilibx-linux/mlx.h"
 # include "s_fdf.h"
-# include "./Libft/libft.h"
+# include "./libft/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
@@ -34,6 +34,8 @@
 # define Z_S 0x002c
 # define ISO 0x0031
 # define PARA 0x0032
+# define ZM_S 0x005b
+# define ZM_A 0x005d
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 1000
 # define ZOOM 20
@@ -50,7 +52,7 @@ void			clean_split(char **split);
 t_pixel			iso_proj(t_fdf *fdf, t_pixel p);
 t_pixel			para_proj(t_fdf *fdf, t_pixel p);
 void			update_offset(t_fdf *fdf, t_map *map);
-int				draw_iso(t_fdf *fdf);
+int				draw_img(t_fdf *fdf);
 void			update_angle_x(t_fdf *fdf, int x);
 void			update_angle_y(t_fdf *fdf, int y);
 void			update_angle_z(t_fdf *fdf, int z);
@@ -63,4 +65,5 @@ int				get_g(int trgb);
 int				get_b(int trgb);
 int				create_trgb(int r, int g, int b);
 int				get_gradiant(t_pixel s, t_pixel e, t_pixel c);
+t_pixel			project(t_fdf *fdf, t_pixel p);
 #endif

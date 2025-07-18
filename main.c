@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 22:02:35 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 18:44:32 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 15:00:42 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fdf_init(t_fdf *fdf)
 {
-	fdf->proj = iso_proj;
+	fdf->proj = 1;
 	fdf->zoom = ZOOM;
 	fdf->def_zoom = ZOOM;
 	fdf->angle_x = ANGLE_X;
@@ -32,7 +32,7 @@ void	fdf_init(t_fdf *fdf)
 void	set_proj(t_fdf *fdf)
 {
 	update_offset(fdf, &fdf->map);
-	draw_iso(fdf);
+	draw_img(fdf);
 	if (fdf->img.x_len > fdf->img.y_len)
 		fdf->zoom = (WIN_HEIGHT - 50) / (fdf->map.width
 				+ (fdf->img.x_len / fdf->map.width));
@@ -41,7 +41,7 @@ void	set_proj(t_fdf *fdf)
 				+ (fdf->img.y_len / fdf->map.height));
 	fdf->def_zoom = fdf->zoom;
 	update_offset(fdf, &fdf->map);
-	draw_iso(fdf);
+	draw_img(fdf);
 	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
 }
 

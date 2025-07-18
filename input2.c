@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 11:37:20 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/16 14:10:18 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 15:00:56 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	update_img(t_fdf *fdf)
 {
-	draw_iso(fdf);
+	draw_img(fdf);
 	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
 }
 

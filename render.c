@@ -6,21 +6,21 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 22:31:47 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/18 12:58:28 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 15:11:24 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "./Gnl/get_next_line.h"
+//#include "./Gnl/get_next_line.h"
 
 void	update_offset(t_fdf *fdf, t_map *map)
 {
 	t_pixel	xy[4];
 
-	xy[0] = (*fdf->proj)(fdf, map->pixels[0]);
-	xy[1] = (*fdf->proj)(fdf, map->pixels[map->width - 1]);
-	xy[2] = (*fdf->proj)(fdf, map->pixels[map->width * (map->height - 1) - 1]);
-	xy[3] = (*fdf->proj)(fdf, map->pixels[map->width * map->height - 1]);
+	xy[0] = project(fdf, map->pixels[0]);
+	xy[1] = project(fdf, map->pixels[map->width - 1]);
+	xy[2] = project(fdf, map->pixels[map->width * (map->height - 1) - 1]);
+	xy[3] = project(fdf, map->pixels[map->width * map->height - 1]);
 	fdf->img.x_len = xy[1].x - xy[0].x;
 	fdf->img.y_len = xy[2].y - xy[0].y;
 	fdf->offset_x = (WIN_WIDTH) / 2;
@@ -72,7 +72,7 @@ void	draw_line(t_img *img, t_pixel p0, t_pixel p1)
 	}
 }
 
-int	draw_iso(t_fdf *fdf)
+int	draw_img(t_fdf *fdf)
 {
 	int		i;
 	t_pixel	*pixels;
@@ -86,11 +86,11 @@ int	draw_iso(t_fdf *fdf)
 	{
 		if (i + 1 < fdf->map.width * fdf->map.height && (i + 1)
 			% fdf->map.width != 0)
-			draw_line(img, (*fdf->proj)(fdf, pixels[i]),
-				(*fdf->proj)(fdf, pixels[i + 1]));
+			draw_line(img, project(fdf, pixels[i]),
+				project(fdf, pixels[i + 1]));
 		if (i + fdf->map.width < fdf->map.width * fdf->map.height)
-			draw_line(img, (*fdf->proj)(fdf, pixels[i]),
-				(*fdf->proj)(fdf, pixels[i + fdf->map.width]));
+			draw_line(img, project(fdf, pixels[i]),
+				project(fdf, pixels[i + fdf->map.width]));
 		i++;
 	}
 	return (1);
