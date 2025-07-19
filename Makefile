@@ -6,7 +6,7 @@
 #    By: lupayet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/06 11:54:12 by lupayet           #+#    #+#              #
-#    Updated: 2025/07/18 18:09:09 by lupayet          ###   ########.fr        #
+#    Updated: 2025/07/19 19:04:14 by lupayet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME = fdf
 
 CC	= cc
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror
 RM = rm -f
 LIBFT_P = ./libft/
 MLX_P = ./minilibx-linux/
@@ -30,7 +30,7 @@ SRC	= main.c input.c input2.c clean.c close.c map.c color.c draw.c render.c \
 OBJ	= $(SRC:.c=.o)
 
 %.o: %.c fdf.h s_fdf.h
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -g -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 all: $(NAME)
 
@@ -46,7 +46,7 @@ $(LIBFT):
 
 $(NAME): $(MLX) $(LIBFT) $(OBJ)
 	@echo "\nCOMPILING FDF..."
-	@$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L./minilibx-linux/ -lmlx -lXext -lX11 -lm -g $(LIBFT_P)libft.a -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L./minilibx-linux/ -lmlx -lXext -lX11 -lm $(LIBFT_P)libft.a -o $(NAME)
 	@echo "> FDF READY"
 
 clean:

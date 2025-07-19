@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:42:02 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/18 17:56:59 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/19 20:00:07 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	set_pixels(char *path, t_map *map, t_fdf *fdf)
 	map->line = get_next_line(map->fd);
 	map->width = count_word(map->line, ' ');
 	map->pixels = malloc(sizeof(t_pixel) * map->height * map->width);
-	if (!map->pixels || map->width != 0)
+	if (!map->pixels || map->width == 0)
 		close_fdf(fdf);
 	l = 0;
 	while (map->line)
@@ -110,7 +110,11 @@ int	map_init(char *path, t_fdf *fdf)
 
 	fdf->map.fd = open(path, O_RDONLY);
 	if (fdf->map.fd == -1)
+	{
+		ft_printf("%d\n", fdf->map.fd);
 		close_fdf(fdf);
+	}
+	close(fdf->map.fd);
 	map = &fdf->map;
 	map->height = map_height(path);
 	set_pixels(path, map, fdf);
