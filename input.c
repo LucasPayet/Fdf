@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/20 16:35:55 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/20 17:14:41 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	update_zoom(t_fdf *fdf, int z)
 void	keybinds(int keycode, t_fdf *fdf)
 {
 	if (keycode == ESC)
-		close_fdf(fdf);	
+		close_fdf(fdf);
 }
 
 int	input(int keycode, t_fdf *fdf)
