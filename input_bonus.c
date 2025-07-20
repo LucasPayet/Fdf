@@ -6,7 +6,7 @@
 /*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 10:59:19 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/20 16:35:55 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/18 15:04:05 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,54 @@ void	update_zoom(t_fdf *fdf, int z)
 void	keybinds(int keycode, t_fdf *fdf)
 {
 	if (keycode == ESC)
-		close_fdf(fdf);	
+		close_fdf(fdf);
+	if (keycode == LEFT)
+		update_tx(fdf, 1);
+	if (keycode == RIGHT)
+		update_tx(fdf, -1);
+	if (keycode == UP)
+		update_ty(fdf, 1);
+	if (keycode == DOWN)
+		update_ty(fdf, -1);
+	if (keycode == ADD)
+		update_zoom(fdf, 1);
+	if (keycode == SUB)
+		update_zoom(fdf, -1);
+	if (keycode == ZM_S)
+	{
+		fdf->z_mod -= 1;
+		update_img(fdf);
+	}
+	if (keycode == ZM_A)
+	{
+		fdf->z_mod += 1;
+		update_img(fdf);
+	}	
 }
 
 int	input(int keycode, t_fdf *fdf)
 {
 	keybinds(keycode, fdf);
+	if (keycode == X_A)
+		update_angle_x(fdf, 5);
+	if (keycode == X_S)
+		update_angle_x(fdf, -5);
+	if (keycode == Y_A)
+		update_angle_y(fdf, 5);
+	if (keycode == Y_S)
+		update_angle_y(fdf, -5);
+	if (keycode == Z_A)
+		update_angle_z(fdf, 5);
+	if (keycode == Z_S)
+		update_angle_z(fdf, -5);
+	if (keycode == ISO || keycode == PARA)
+	{
+		if (keycode == ISO)
+			fdf->proj = 1;
+		else
+			fdf->proj = 2;
+		update_offset(fdf, &fdf->map);
+		update_img(fdf);
+	}
 	return (0);
 }

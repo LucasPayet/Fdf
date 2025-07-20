@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input2.c                                           :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lupayet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/10 11:37:20 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/20 16:34:45 by lupayet          ###   ########.fr       */
+/*   Created: 2025/07/10 23:26:20 by lupayet           #+#    #+#             */
+/*   Updated: 2025/07/11 16:15:00 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-void	update_img(t_fdf *fdf)
+int	ft_abs(int n)
 {
-	draw_img(fdf);
-	mlx_put_image_to_window(fdf->mlx.mlx, fdf->mlx.win, fdf->img.img, 0, 0);
+	if (n < 0)
+		return (-n);
+	return (n);
+}
+
+int	slope(int n0, int n1)
+{
+	if (n0 < n1)
+		return (1);
+	return (-1);
 }
