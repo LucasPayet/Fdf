@@ -6,7 +6,7 @@
 /*   By: lupayet <lupayet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 23:42:02 by lupayet           #+#    #+#             */
-/*   Updated: 2025/07/19 20:00:07 by lupayet          ###   ########.fr       */
+/*   Updated: 2025/07/20 14:21:06 by lupayet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	count_word(const char *str, char c)
 
 	count = 0;
 	i = 0;
-	if (*str != c && *str != '\0' && c != '\0')
+	if (*str != c && *str != '\0' && c != '\0' && *str != '\n')
 		count++;
 	while (str[i])
 	{
@@ -110,10 +110,7 @@ int	map_init(char *path, t_fdf *fdf)
 
 	fdf->map.fd = open(path, O_RDONLY);
 	if (fdf->map.fd == -1)
-	{
-		ft_printf("%d\n", fdf->map.fd);
 		close_fdf(fdf);
-	}
 	close(fdf->map.fd);
 	map = &fdf->map;
 	map->height = map_height(path);
